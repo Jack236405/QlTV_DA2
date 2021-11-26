@@ -21,9 +21,9 @@ namespace PJC.Models
         private double? tienPhat;
         [Display(Name = "Mã phiếu mượn:")]
         public string MaPM { get => maPM; set => maPM = value; }
-        [Display(Name = "Mã độc giả:")]
+        [Display(Name = "Tên độc giả:")]
         public string MaDG { get => maDG; set => maDG = value; }
-        [Display(Name = "Mã sách:")]
+        [Display(Name = "Tên sách:")]
         public string MaSach { get => maSach; set => maSach = value; }
 
         [Display(Name = "Ngày Hẹn Trả:")]

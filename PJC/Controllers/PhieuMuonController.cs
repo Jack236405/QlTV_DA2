@@ -54,7 +54,7 @@ namespace PJC.Controllers
                 TempData["result"] = "Thêm mới phiếu mượn không thành công";
             }
 
-            return Redirect("/PhieuMuon/Index");
+            return Redirect("/PhieuTra/Create");
         }
         [HttpGet]
         public IActionResult Edit(string id)

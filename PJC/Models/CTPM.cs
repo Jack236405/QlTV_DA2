@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace PJC.Models
@@ -10,12 +11,12 @@ namespace PJC.Models
         private DateTime? ngayTra;
         private int tinhTrangSach;
         private int? tinhTrangTra;
-        private string? nguoiDung;
-        private string? ghiChu;
-        private int? tienPhat;
+        private string nguoiDung;
+        private string ghiChu;
+        private double? tienPhat;
         [Display(Name = "Mã phiếu mượn:")]
         public string MaPM { get => maPM; set => maPM = value; }
-        [Display(Name = "Mã sách:")]
+        [Display(Name = "Tên sách:")]
         public string MaSach { get => maSach; set => maSach = value; }
         [Display(Name = "Ngày trả:")]
         [DataType(DataType.Date)]
@@ -25,11 +26,11 @@ namespace PJC.Models
         [Display(Name = "Tình trạng trả:")]
         public int? TinhTrangTra { get => tinhTrangTra; set => tinhTrangTra = value; }
         [Display(Name = "Thủ thư nhận sách:")]
-        public string? NguoiDung { get => NguoiDung; set => NguoiDung = value; }
+        public string NguoiDung { get => nguoiDung; set => nguoiDung = value; }
         [Display(Name = "Ghi chú:")]
-        public string? GhiChu { get => ghiChu; set => ghiChu = value; }
+        public string GhiChu { get => ghiChu; set => ghiChu = value; }
         [Display(Name = "Tiền phạt:")]
-        public int? TienPhat { get => tienPhat; set => tienPhat = value; }
-
+        public double? TienPhat { get => tienPhat; set => tienPhat = value; }
+        public List<Sach> Sach { get; set; }
     }
 }

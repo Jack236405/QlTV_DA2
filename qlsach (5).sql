@@ -11,13 +11,17 @@ CREATE TABLE ctpm (
   TinhTrangTra int DEFAULT NULL,
   NguoiDung nvarchar(10)  DEFAULT NULL,
   GhiChu nvarchar(50)  DEFAULT NULL,
-  TienPhat int 
+  TienPhat int NULL
   PRIMARY KEY (MaPM,MaSach)
 ) 
---INSERT INTO ctpm (MaPM, MaSach, NgayTra, TinhTrangSach, TinhTrangTra, NguoiDung, GhiChu, TienPhat) VALUES
---(N'PM01', N'MS01', '2020-11-17', 1, 2, N'Tuyen',N'Null',0),
---(N'PM01', N'MS02', '2020-11-17', 1, 2, N'Tuyen',N'Null',0)
 
+select MaPM,MaSach,NgayTra,TinhTrangSach,NguoiDung,TinhTrangTra,GhiChu from ctpm where MaPM=N'PM01' and MaSach=N'MS01'
+INSERT INTO ctpm (MaPM, MaSach, NgayTra, TinhTrangSach, TinhTrangTra, NguoiDung, GhiChu, TienPhat) VALUES
+(N'PM01', N'MS01', null, 1, null,null,null,null)
+INSERT INTO ctpm (MaPM, MaSach, TinhTrangSach) VALUES
+(N'PM03', N'MS01', 1)
+--(N'PM01', N'MS02', '2020-11-17', 1, 2, N'Tuyen',null,0)
+select * from ctpm
 CREATE TABLE docgia (
   MaDG nvarchar(10)  NOT NULL,
   TenDG nvarchar(20)  NOT NULL,

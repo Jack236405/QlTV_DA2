@@ -16,7 +16,7 @@ namespace PJC.Models
         private string nguoiDung;
         [Display(Name = "Mã phiếu mượn:")]
         public string MaPM { get => maPM; set => maPM = value; }
-        [Display(Name = "Mã độc giả:")]
+        [Display(Name = "Tên độc giả:")]
         public string MaDG { get => maDG; set => maDG = value; }
         [Display(Name = "Ngày Mượn:")]
         [DataType(DataType.Date)]

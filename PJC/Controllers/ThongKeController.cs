@@ -15,15 +15,15 @@ namespace PJC.Controllers
             int a = context.DemSach();
             int b = context.DemDocGia();
             int c = context.DemPhieuMuon();
-            //int d = context.DemPhieuTra();
-            //int e = context.DemPhieuChuaTra();
-           // double f = context.DemDoanhThu();
+            int d = context.DemPhieuTra();
+            int e = context.DemPhieuChuaTra();
+            double f = context.DemDoanhThu();
             ViewBag.SoLuongSach = a;
             ViewBag.SoLuongDocGia = b;
             ViewBag.SoLuongPhieuMuon = c;
-            //ViewBag.SoLuongPhieuTra = d;
-            //ViewBag.SoLuongPhieuChuaTra = e;
-            //ViewBag.DoanhThu = f;
+            ViewBag.SoLuongPhieuTra = d;
+            ViewBag.SoLuongPhieuChuaTra = e;
+            ViewBag.DoanhThu = f;
             return View();
         }
         public IActionResult Index1()
@@ -32,15 +32,15 @@ namespace PJC.Controllers
             int a = context.DemSach();
             int b = context.DemDocGia();
             int c = context.DemPhieuMuon();
-            //int d = context.DemPhieuTra();
-            //int e = context.DemPhieuChuaTra();
-            //double f = context.DemDoanhThu();
+            int d = context.DemPhieuTra();
+            int e = context.DemPhieuChuaTra();
+            double f = context.DemDoanhThu();
             ViewBag.SoLuongSach = a;
             ViewBag.SoLuongDocGia = b;
-            //ViewBag.SoLuongPhieuMuon = c;
-            //ViewBag.SoLuongPhieuTra = d;
-            //ViewBag.SoLuongPhieuChuaTra = e;
-            //ViewBag.DoanhThu = f;
+            ViewBag.SoLuongPhieuMuon = c;
+            ViewBag.SoLuongPhieuTra = d;
+            ViewBag.SoLuongPhieuChuaTra = e;
+            ViewBag.DoanhThu = f;
             return View(context.GetSanPham());
         }
         public IActionResult Index2()
@@ -48,16 +48,16 @@ namespace PJC.Controllers
             StoreContext context = HttpContext.RequestServices.GetService(typeof(PJC.Models.StoreContext)) as StoreContext;
             int a = context.DemSach();
             int b = context.DemDocGia();
-            //int c = context.DemPhieuMuon();
-            //int d = context.DemPhieuTra();
-            //int e = context.DemPhieuChuaTra();
-            //double f = context.DemDoanhThu();
+            int c = context.DemPhieuMuon();
+            int d = context.DemPhieuTra();
+            int e = context.DemPhieuChuaTra();
+            double f = context.DemDoanhThu();
             ViewBag.SoLuongSach = a;
             ViewBag.SoLuongDocGia = b;
-            //ViewBag.SoLuongPhieuMuon = c;
-            //ViewBag.SoLuongPhieuTra = d;
-            //ViewBag.SoLuongPhieuChuaTra = e;
-            //ViewBag.DoanhThu = f;
+            ViewBag.SoLuongPhieuMuon = c;
+            ViewBag.SoLuongPhieuTra = d;
+            ViewBag.SoLuongPhieuChuaTra = e;
+            ViewBag.DoanhThu = f;
             return View(context.GetDocGia());
         }
         public IActionResult Index3()
@@ -65,16 +65,16 @@ namespace PJC.Controllers
             StoreContext context = HttpContext.RequestServices.GetService(typeof(PJC.Models.StoreContext)) as StoreContext;
             int a = context.DemSach();
             int b = context.DemDocGia();
-            //int c = context.DemPhieuMuon();
-            //int d = context.DemPhieuTra();
-            //int e = context.DemPhieuChuaTra();
-            //double f = context.DemDoanhThu();
+            int c = context.DemPhieuMuon();
+            int d = context.DemPhieuTra();
+            int e = context.DemPhieuChuaTra();
+            double f = context.DemDoanhThu();
             ViewBag.SoLuongSach = a;
             ViewBag.SoLuongDocGia = b;
-            //ViewBag.SoLuongPhieuMuon = c;
-            //ViewBag.SoLuongPhieuTra = d;
-            //ViewBag.SoLuongPhieuChuaTra = e;
-            //ViewBag.DoanhThu = f;
+            ViewBag.SoLuongPhieuMuon = c;
+            ViewBag.SoLuongPhieuTra = d;
+            ViewBag.SoLuongPhieuChuaTra = e;
+            ViewBag.DoanhThu = f;
             return View(context.GetPhieuMuon());
         }
         public IActionResult Index4()
@@ -82,16 +82,16 @@ namespace PJC.Controllers
             StoreContext context = HttpContext.RequestServices.GetService(typeof(PJC.Models.StoreContext)) as StoreContext;
             int a = context.DemSach();
             int b = context.DemDocGia();
-            //int c = context.DemPhieuMuon();
-            //int d = context.DemPhieuTra();
-            //int e = context.DemPhieuChuaTra();
-            //double f = context.DemDoanhThu();
+            int c = context.DemPhieuMuon();
+            int d = context.DemPhieuTra();
+            int e = context.DemPhieuChuaTra();
+            double f = context.DemDoanhThu();
             ViewBag.SoLuongSach = a;
             ViewBag.SoLuongDocGia = b;
-            //ViewBag.SoLuongPhieuMuon = c;
-            //ViewBag.SoLuongPhieuTra = d;
-            //ViewBag.SoLuongPhieuChuaTra = e;
-            //ViewBag.DoanhThu = f;
+            ViewBag.SoLuongPhieuMuon = c;
+            ViewBag.SoLuongPhieuTra = d;
+            ViewBag.SoLuongPhieuChuaTra = e;
+            ViewBag.DoanhThu = f;
             return View(context.GetPhieuTra());
         }
         public IActionResult Index5()
@@ -99,16 +99,16 @@ namespace PJC.Controllers
             StoreContext context = HttpContext.RequestServices.GetService(typeof(PJC.Models.StoreContext)) as StoreContext;
             int a = context.DemSach();
             int b = context.DemDocGia();
-            //int c = context.DemPhieuMuon();
-            //int d = context.DemPhieuTra();
-            //int e = context.DemPhieuChuaTra();
-            //double f = context.DemDoanhThu();
+            int c = context.DemPhieuMuon();
+            int d = context.DemPhieuTra();
+            int e = context.DemPhieuChuaTra();
+            double f = context.DemDoanhThu();
             ViewBag.SoLuongSach = a;
             ViewBag.SoLuongDocGia = b;
-            //ViewBag.SoLuongPhieuMuon = c;
-            //ViewBag.SoLuongPhieuTra = d;
-            //ViewBag.SoLuongPhieuChuaTra = e;
-            //ViewBag.DoanhThu = f;
+            ViewBag.SoLuongPhieuMuon = c;
+            ViewBag.SoLuongPhieuTra = d;
+            ViewBag.SoLuongPhieuChuaTra = e;
+            ViewBag.DoanhThu = f;
             return View(context.GetPhieuChuaTra());
         }
         public IActionResult Index6()
@@ -116,16 +116,16 @@ namespace PJC.Controllers
             StoreContext context = HttpContext.RequestServices.GetService(typeof(PJC.Models.StoreContext)) as StoreContext;
             int a = context.DemSach();
             int b = context.DemDocGia();
-            //int c = context.DemPhieuMuon();
-            //int d = context.DemPhieuTra();
-            //int e = context.DemPhieuChuaTra();
-            //double f = context.DemDoanhThu();
+            int c = context.DemPhieuMuon();
+            int d = context.DemPhieuTra();
+            int e = context.DemPhieuChuaTra();
+            double f = context.DemDoanhThu();
             ViewBag.SoLuongSach = a;
             ViewBag.SoLuongDocGia = b;
-            //ViewBag.SoLuongPhieuMuon = c;
-            //ViewBag.SoLuongPhieuTra = d;
-            //ViewBag.SoLuongPhieuChuaTra = e;
-            //ViewBag.DoanhThu = f;
+            ViewBag.SoLuongPhieuMuon = c;
+            ViewBag.SoLuongPhieuTra = d;
+            ViewBag.SoLuongPhieuChuaTra = e;
+            ViewBag.DoanhThu = f;
             return View(context.GetPhieuTraBiPhat());
         }
     }

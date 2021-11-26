@@ -35,7 +35,7 @@ namespace PJC.Models
         public string ImageUrl { get => imageUrl; set => imageUrl = value; }
         [Display(Name = "Miêu tả: ")]
         public string MieuTa { get => mieuTa; set => mieuTa = value; }
-
+        public List<CTPM> CTPM { get; set; }
         public Sach()
         {
 

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Security.Cryptography.X509Certificates;
+using System.Data.SqlTypes;
 
 namespace PJC.Models
 {
@@ -663,22 +664,25 @@ namespace PJC.Models
             }
             return list;
         }
+        System.Data.SqlTypes.SqlDateTime _date;
         public int CreatePhieuTra(CTPM pt)
         {
             int soluongsach = 0;
+            _date = SqlDateTime.Null;
+
             using (SqlConnection conn = GetConnection())
             {
                 conn.Open();
-                var str = "insert into ctpm values(@MaPM, @MaSach,@NgayTra,@TinhTrangSach,@TinhTrangTra,@NguoiDung,@GhiChu,@TienPhat)";
+                var str = "insert into ctpm values(@MaPM, @MaSach, @NgayTra, @TinhTrangSach, @TinhTrangTra, @NguoiDung, @GhiChu, @TienPhat)";
                 SqlCommand cmd = new SqlCommand(str, conn);
                 cmd.Parameters.AddWithValue("MaPM", pt.MaPM);
                 cmd.Parameters.AddWithValue("MaSach", pt.MaSach);
-                cmd.Parameters.AddWithValue("NgayTra", null);
+                cmd.Parameters.AddWithValue("NgayTra", _date);
                 cmd.Parameters.AddWithValue("TinhTrangSach", pt.TinhTrangSach);
-                cmd.Parameters.AddWithValue("TinhTrangTra", null);
-                cmd.Parameters.AddWithValue("NguoiDung", null);
-                cmd.Parameters.AddWithValue("GhiChu", null);
-                cmd.Parameters.AddWithValue("TienPhat", null);
+                cmd.Parameters.AddWithValue("TinhTrangTra", DBNull.Value);
+                cmd.Parameters.AddWithValue("NguoiDung", DBNull.Value);
+                cmd.Parameters.AddWithValue("GhiChu", DBNull.Value);
+                cmd.Parameters.AddWithValue("TienPhat", DBNull.Value);
                 cmd.ExecuteNonQuery();
                 using (SqlConnection conn3 = GetConnection())
                 {
@@ -714,11 +718,11 @@ namespace PJC.Models
             using (SqlConnection conn = GetConnection())
             {
                 conn.Open();
-                var str = "update ctpm set NgayTra=@NgayTra,TinhTrangTra=@TinhTrangTra,NguoiDung=@NguoiDung,GhiChu=@GhiChu where MaPM=@MaPM and MaSach=@MaSach";
+                var str = "update ctpm set NgayTra=@NgayTra,TinhTrangSach=@TinhTrangSach,TinhTrangTra=@TinhTrangTra,NguoiDung=@NguoiDung,GhiChu=@GhiChu where MaPM=@MaPM and MaSach=@MaSach";
                 SqlCommand cmd = new SqlCommand(str, conn);
 
                 cmd.Parameters.AddWithValue("NgayTra", pt.NgayTra);
-                // cmd.Parameters.AddWithValue("TinhTrangSach", pt.TinhTrangSach);
+                cmd.Parameters.AddWithValue("TinhTrangSach", pt.TinhTrangSach);
                 cmd.Parameters.AddWithValue("TinhTrangTra", pt.TinhTrangTra);
                 cmd.Parameters.AddWithValue("NguoiDung", pt.NguoiDung);
                 cmd.Parameters.AddWithValue("GhiChu", pt.GhiChu);
@@ -745,9 +749,9 @@ namespace PJC.Models
             using (SqlConnection conn = GetConnection())
             {
                 conn.Open();
-                var str = "select * from ctpm where MaPM=@mapm and MaSach=@masach";
+                var str = "select MaPM,MaSach,NgayTra,TinhTrangSach,NguoiDung,TinhTrangTra,GhiChu from ctpm where MaPM=@MaPM and MaSach=@MaSach";
                 SqlCommand cmd = new SqlCommand(str, conn);
-                cmd.Parameters.AddWithValue("mapm", id);
+                cmd.Parameters.AddWithValue("MaPM", id);
                 cmd.Parameters.AddWithValue("Masach", masach);
                 using (var reader = cmd.ExecuteReader())
                 {

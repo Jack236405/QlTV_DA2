@@ -13,15 +13,15 @@ namespace PJC.Areas.PageReview.Controllers
             int a = context.DemSach();
             int b = context.DemDocGia();
             int c = context.DemPhieuMuon();
-            //int d = context.DemPhieuTra();
-            //int e = context.DemPhieuChuaTra();
-            //double f = context.DemDoanhThu();
+            int d = context.DemPhieuTra();
+            int e = context.DemPhieuChuaTra();
+            double f = context.DemDoanhThu();
             ViewBag.SoLuongSach = a;
             ViewBag.SoLuongDocGia = b;
             ViewBag.SoLuongPhieuMuon = c;
-            //ViewBag.SoLuongPhieuTra = d;
-            //ViewBag.SoLuongPhieuChuaTra = e;
-            //ViewBag.DoanhThu = f;
+            ViewBag.SoLuongPhieuTra = d;
+            ViewBag.SoLuongPhieuChuaTra = e;
+            ViewBag.DoanhThu = f;
             return View();
         }
     }
