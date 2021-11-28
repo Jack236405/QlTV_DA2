@@ -39,7 +39,12 @@
 
                     <div class="form-group">
                         <label asp-for="TinhTrangSach" class="control-label"></label>
-                        <input asp-for="TinhTrangSach" class="form-control" value="1" />
+                        <select asp-for="TinhTrangSach"  class="form-control">
+                            <option> - chọn - </option>
+                            <option value="2">Bình Thường</option>
+                            <option value="1">Đã hư một phần</option>
+                            @*<option value="0">Mất sách</option>*@
+                        </select>                  
                         <span asp-validation-for="TinhTrangSach" class="text-danger"></span>
                     </div>
 

@@ -70,10 +70,17 @@
                                         @Html.DisplayFor(modelItem => item.NguoiDung)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.MatKhau)
+                                       ******
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.PhanQuyen)
+                                        @if (item.PhanQuyen == 1)
+                                        {
+                                            <span>Quản lý</span>
+                                        }
+                                        else if (item.PhanQuyen == 2)
+                                        {
+                                            <span>Thủ thư</span>
+                                        }
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.TenND)
