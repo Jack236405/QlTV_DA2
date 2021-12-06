@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PJC.Models;
@@ -33,6 +34,14 @@ namespace PJC.Areas.User.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+        public IActionResult Personalinformation(string id)
+        {
+            id = HttpContext.Session.GetString("NguoiDung");
+            StoreContext context = HttpContext.RequestServices.GetService(typeof(PJC.Models.StoreContext)) as StoreContext;
+            TaiKhoan s = context.Personalinformation(id);
+            ViewData.Model = s;
+            return View();
         }
     }
 }

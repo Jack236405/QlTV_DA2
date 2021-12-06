@@ -42,6 +42,13 @@ namespace PJC.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
+        public IActionResult Personalinformation(string id)
+        {
+            id = HttpContext.Session.GetString("NguoiDung");
+            StoreContext context = HttpContext.RequestServices.GetService(typeof(PJC.Models.StoreContext)) as StoreContext;
+            TaiKhoan s = context.Personalinformation(id);
+            ViewData.Model = s;
+            return View();
+        }
     }
 }

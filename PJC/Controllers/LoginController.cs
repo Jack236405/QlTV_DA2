@@ -51,8 +51,9 @@ namespace PJC.Controllers
                     return RedirectToAction("Index", "Login");
                 }
                 return Redirect("~/User/Home/Index");
-                }
-        
-     
+        }
+      
+
+
     }
 }

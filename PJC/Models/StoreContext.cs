@@ -428,6 +428,32 @@ namespace PJC.Models
             }
             return dg;
         }
+        public  TaiKhoan Personalinformation(string id)
+        {
+            TaiKhoan tk = new TaiKhoan();
+
+            using (SqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                var str = "select * from NguoiDung where NguoiDung=@NguoiDung";
+                SqlCommand cmd = new SqlCommand(str, conn);
+                cmd.Parameters.AddWithValue("NguoiDung", id);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        tk.NguoiDung = reader["NguoiDung"].ToString();
+                        tk.MatKhau = reader["MatKhau"].ToString();
+                        tk.PhanQuyen = int.Parse(reader["PhanQuyen"].ToString());
+                        tk.TenND = reader["TenND"].ToString();
+                        tk.SDT = reader["SDT"].ToString();
+                        tk.CMND = reader["CMND"].ToString();
+                    }
+
+                }
+            }
+            return tk;
+        }
         public List<PhieuMuon> GetPhieuMuon()
         {
             List<PhieuMuon> list = new List<PhieuMuon>();

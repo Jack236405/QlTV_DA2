@@ -24,6 +24,7 @@ namespace PJC.Models
         public string SDT { get => sDT; set => sDT = value; }
         [Display(Name = "CMND/Thẻ Căn Cước: ")]
         public string CMND { get => cMND; set => cMND = value; }
+        [Display(Name = "Tài Khoản: ")]
         public string NguoiDung { get => nguoiDung; set => nguoiDung = value; }
 
     }
