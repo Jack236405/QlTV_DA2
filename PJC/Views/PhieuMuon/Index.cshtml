@@ -6,7 +6,7 @@
 
 @section Scripts{
     <script>
-setTimeout(function () {
+        setTimeout(function () {
             $('#msgAlert').fadeOut('slow');
         }, 2000);</script>
 }
@@ -25,101 +25,101 @@ setTimeout(function () {
                 <div class="col-md-6 col-xs-12">
                     <a class="btn btn-success" href="/PhieuMuon/Create">Tạo mới</a>
                 </div>
-        </div>
-
-        <div class="card-body">
-            <div class="row">
-                @if (ViewBag.SuccessMsg != null)
-                {
-                    <div id="msgAlert" class="alert alert-success" role="alert">
-                        @ViewBag.SuccessMsg
-                    </div>}
             </div>
-            <div class="card mb-4">
-                <div class="card-header"><i class="fas fa-table mr-1"></i>Phiếu mượn</div>
-                <div class="card-body">
-                    <div class="table-responsive" id="table">
-                        <table style="font-family:Arial" class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                            <thead>
-                                <tr>
-                                    <th>
-                                       @Html.DisplayNameFor(model => model.MaPM)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.MaDG)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.NgayMuon)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.NgayHenTra)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.SoLuongMuon)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.NguoiDung)
-                                    </th>
-                                    
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model)
-                                {
+
+            <div class="card-body">
+                <div class="row">
+                    @if (ViewBag.SuccessMsg != null)
+                    {
+                        <div id="msgAlert" class="alert alert-success" role="alert">
+                            @ViewBag.SuccessMsg
+                        </div>}
+                </div>
+                <div class="card mb-4">
+                    <div class="card-header"><i class="fas fa-table mr-1"></i>Phiếu mượn</div>
+                    <div class="card-body">
+                        <div class="table-responsive" id="table">
+                            <table style="font-family:Arial" class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
                                     <tr>
-                                        <td>
-                                            <a href="~/PhieuMuon/Detail/@item.MaPM" > 
-                                                @Html.DisplayFor(modelItem => item.MaPM) 
-                                            </a> 
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.MaDG)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.NgayMuon)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.NgayHenTra)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.SoLuongMuon)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.NguoiDung)
-                                        </td>
-                                        <td>
-                                            <form action="~/PhieuMuon/Edit" method="get">
-                                                <input type="hidden" value="@item.MaPM" name="id" />
-                                                <input type="submit" value="Sửa" class="btn btn-outline-success" />
-                                            </form>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.MaPM)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.MaDG)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.NgayMuon)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.NgayHenTra)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.SoLuongMuon)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.NguoiDung)
+                                        </th>
 
-                                        </td>
-                                        <td>
-                                            <form action="~/PhieuTra/CTPM" method="get">
-                                                <input type="hidden" value="@item.MaPM" name="id" />
-                                                <input type="submit" value="Chi tiết" class="btn btn-outline-warning" />
-                                            </form>
-                                        </td>
-                                        <td>
-                                            <form action="~/PhieuMuon/Delete" method="get">
-                                                <input type="hidden" value="@item.MaPM" name="id" />
-                                                <input type="submit" value="Xóa" class="btn btn-outline-danger" />
-                                            </form>
-                                        </td>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
                                     </tr>
-                                }
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <a href="~/PhieuMuon/Detail/@item.MaPM">
+                                                    @Html.DisplayFor(modelItem => item.MaPM)
+                                                </a>
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.MaDG)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.NgayMuon)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.NgayHenTra)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.SoLuongMuon)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.NguoiDung)
+                                            </td>
+                                            <td>
+                                                <form action="~/PhieuMuon/Edit" method="get">
+                                                    <input type="hidden" value="@item.MaPM" name="id" />
+                                                    <input type="submit" value="Sửa" class="btn btn-outline-success" />
+                                                </form>
 
+                                            </td>
+                                            <td>
+                                                <form action="~/PhieuTra/CTPM" method="get">
+                                                    <input type="hidden" value="@item.MaPM" name="id" />
+                                                    <input type="submit" value="Chi tiết" class="btn btn-outline-warning" />
+                                                </form>
+                                            </td>
+                                            <td>
+                                                <form action="~/PhieuMuon/Delete" method="get">
+                                                    <input type="hidden" value="@item.MaPM" name="id" />
+                                                    <input type="submit" value="Xóa" class="btn btn-outline-danger" />
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+                        </div>
                     </div>
                 </div>
-                </div>
             </div>
-            </div>
+
         </div>
     </div>
-
+    </div>
 

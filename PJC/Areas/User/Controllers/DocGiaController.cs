@@ -17,13 +17,13 @@ namespace PJC.Areas.User.Controllers
             return View(context.GetDocGia());
         }
         [HttpGet]
-       // [Area("NguoiDung")]
+       // [Area("User")]
         public IActionResult Create()
         {
             return View();
         }
         [HttpPost]
-       // [Area("NguoiDung")]
+       // [Area("User")]
         public IActionResult Create(DocGia dg)
         {
             int count;
@@ -40,7 +40,7 @@ namespace PJC.Areas.User.Controllers
             return Redirect("~/User/DocGia/Index");
         }
         [HttpGet]
-      //  [Area("NguoiDung")]
+      //  [Area("User")]
         public IActionResult Edit(string id)
         {
             StoreContext context = HttpContext.RequestServices.GetService(typeof(PJC.Models.StoreContext)) as StoreContext;
@@ -66,7 +66,7 @@ namespace PJC.Areas.User.Controllers
             }
         }
         [HttpGet]
-       // [Area("NguoiDung")]
+       // [Area("User")]
         public IActionResult Delete(string id)
         {
             StoreContext context = HttpContext.RequestServices.GetService(typeof(PJC.Models.StoreContext)) as StoreContext;
@@ -75,7 +75,7 @@ namespace PJC.Areas.User.Controllers
             return View();
         }
         [HttpPost]
-      //  [Area("NguoiDung")]
+      //  [Area("User")]
         public IActionResult Delete(DocGia dg)
         {
             int count;
@@ -92,7 +92,7 @@ namespace PJC.Areas.User.Controllers
                 return Redirect("~/User/DocGia/Index");
             }
         }
-       // [Area("NguoiDung")]
+       // [Area("User")]
         public IActionResult Detail(string id)
         {
             StoreContext context = HttpContext.RequestServices.GetService(typeof(PJC.Models.StoreContext)) as StoreContext;

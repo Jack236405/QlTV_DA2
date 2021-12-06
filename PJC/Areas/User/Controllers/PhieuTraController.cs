@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using PJC.Models;
 
 namespace PJC.Areas.User.Controllers
@@ -29,7 +30,9 @@ namespace PJC.Areas.User.Controllers
             {
                 ViewBag.SuccessMsg = TempData["result"];
             }
+            StoreContext context = HttpContext.RequestServices.GetService(typeof(PJC.Models.StoreContext)) as StoreContext;
             ViewBag.mapm = HttpContext.Session.GetString("mapm");
+            ViewData["MaSach"] = new SelectList(context.GetSanPham(), "MaSach", "TenSach");
             return View();
         }
         [HttpPost]
@@ -120,7 +123,7 @@ namespace PJC.Areas.User.Controllers
         [HttpGet]
         public IActionResult EditTraSach(string id, string mas)
         {
-            ViewBag.user = HttpContext.Session.GetString("NguoiDung");
+            ViewBag.user = HttpContext.Session.GetString("user");
             StoreContext context = HttpContext.RequestServices.GetService(typeof(PJC.Models.StoreContext)) as StoreContext;
             PhieuMuonInCTPM pt = context.GetPhieuChuaTraById(id, mas);
             ViewData.Model = pt;
@@ -130,7 +133,7 @@ namespace PJC.Areas.User.Controllers
         public IActionResult EditTraSach(PhieuMuonInCTPM pt)
         {
             int count, count1;
-            ViewBag.user = HttpContext.Session.GetString("NguoiDung");
+            ViewBag.user = HttpContext.Session.GetString("user");
             StoreContext context = HttpContext.RequestServices.GetService(typeof(PJC.Models.StoreContext)) as StoreContext;
 
             count = context.UpdatePhieuTra(pt);

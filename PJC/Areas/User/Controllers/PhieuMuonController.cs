@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using MySqlX.XDevAPI;
 using PJC.Models;
 
@@ -27,7 +28,9 @@ namespace PJC.Areas.User.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            ViewBag.sessionv= HttpContext.Session.GetString("NguoiDung");
+            StoreContext context = HttpContext.RequestServices.GetService(typeof(PJC.Models.StoreContext)) as StoreContext;
+            ViewBag.sessionv = HttpContext.Session.GetString("NguoiDung");
+            ViewData["MaDG"] = new SelectList(context.GetDocGia(), "MaDG", "TenDG");
             return View();
         }
         [HttpPost]

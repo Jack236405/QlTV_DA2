@@ -260,15 +260,33 @@ namespace PJC.Models
         public int DoiMK(DoiMK s)
         {
             s.MatKhau = SHA1.ComputeHash(s.MatKhau);
-            using (SqlConnection conn = GetConnection())
+            s.MatKhauCu = SHA1.ComputeHash(s.MatKhauCu);
+            using (SqlConnection conn1 = GetConnection())
             {
-                conn.Open();
-                var str = "update NguoiDung set  MatKhau=@MatKhau where NguoiDung=@NguoiDung";
-                SqlCommand cmd = new SqlCommand(str, conn);
-                cmd.Parameters.AddWithValue("MatKhau", s.MatKhau);
+                conn1.Open();
+                var str = "select * from NguoiDung where NguoiDung=@NguoiDung and MatKhau=@MatKhauCu";
+                SqlCommand cmd = new SqlCommand(str, conn1);
                 cmd.Parameters.AddWithValue("NguoiDung", s.NguoiDung);
-                return (cmd.ExecuteNonQuery());
+                cmd.Parameters.AddWithValue("MatKhauCu", s.MatKhauCu);
+                var reader = cmd.ExecuteReader();
+                if (reader.Read() == false)
+                {
+                    return 100;
+                }
+                else
+                {
+                    using (SqlConnection conn = GetConnection())
+                    {
+                        conn.Open();
+                        var str1 = "update NguoiDung set  MatKhau=@MatKhau where NguoiDung=@NguoiDung1";
+                        SqlCommand cmd1 = new SqlCommand(str1, conn);
+                        cmd1.Parameters.AddWithValue("MatKhau", s.MatKhau);
+                        cmd1.Parameters.AddWithValue("NguoiDung1", s.NguoiDung);
+                        return (cmd1.ExecuteNonQuery());
+                    }
+                }
             }
+           
         }
         public Sach GetSachByMa(string id)
         {

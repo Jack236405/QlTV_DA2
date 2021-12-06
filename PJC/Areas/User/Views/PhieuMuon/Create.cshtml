@@ -27,8 +27,7 @@
                     </div>
                     <div class="form-group">
                         <label asp-for="MaDG" class="control-label"></label>
-                        <input asp-for="MaDG" class="form-control" value="DG" />
-                        <span asp-validation-for="MaDG" class="text-danger"></span>
+                        <select asp-for="MaDG" class="form-control" asp-items="ViewBag.MaDG"></select>
                     </div>
                     <div class="form-group">
                         <label asp-for="NgayMuon" class="control-label"></label>
@@ -40,7 +39,7 @@
                         <input asp-for="NgayHenTra" class="form-control" />
                         <span asp-validation-for="NgayHenTra" class="text-danger"></span>
                     </div>
-                 
+
                     <div class="form-group">
                         <label asp-for="NguoiDung" class="control-label"></label>
                         <input asp-for="NguoiDung" class="form-control" value="@ViewBag.sessionv" readonly />

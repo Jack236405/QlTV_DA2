@@ -6,21 +6,42 @@
 
   <ItemGroup>
     <Compile Remove="Areas\Admin\**" />
-    <Compile Remove="Areas\User\Data\**" />
-    <Compile Remove="Areas\User\Models\**" />
     <Content Remove="Areas\Admin\**" />
-    <Content Remove="Areas\User\Data\**" />
-    <Content Remove="Areas\User\Models\**" />
     <EmbeddedResource Remove="Areas\Admin\**" />
-    <EmbeddedResource Remove="Areas\User\Data\**" />
-    <EmbeddedResource Remove="Areas\User\Models\**" />
     <None Remove="Areas\Admin\**" />
-    <None Remove="Areas\User\Data\**" />
-    <None Remove="Areas\User\Models\**" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
+    <None Include="Areas\User\Views\DMK\DoiMK.cshtml" />
+    <None Include="Areas\User\Views\DocGia\Create.cshtml" />
+    <None Include="Areas\User\Views\DocGia\Delete.cshtml" />
+    <None Include="Areas\User\Views\DocGia\Detail.cshtml" />
+    <None Include="Areas\User\Views\DocGia\Edit.cshtml" />
+    <None Include="Areas\User\Views\DocGia\Index.cshtml" />
+    <None Include="Areas\User\Views\Home\Index.cshtml" />
+    <None Include="Areas\User\Views\PhieuMuon\Create.cshtml" />
+    <None Include="Areas\User\Views\PhieuMuon\Delete.cshtml" />
+    <None Include="Areas\User\Views\PhieuMuon\Detail.cshtml" />
+    <None Include="Areas\User\Views\PhieuMuon\Edit.cshtml" />
+    <None Include="Areas\User\Views\PhieuMuon\EditSoLuong.cshtml" />
+    <None Include="Areas\User\Views\PhieuMuon\Index.cshtml" />
+    <None Include="Areas\User\Views\PhieuTra\Create.cshtml" />
+    <None Include="Areas\User\Views\PhieuTra\Delete.cshtml" />
+    <None Include="Areas\User\Views\PhieuTra\Detail.cshtml" />
+    <None Include="Areas\User\Views\PhieuTra\Edit.cshtml" />
+    <None Include="Areas\User\Views\PhieuTra\EditTraSach.cshtml" />
+    <None Include="Areas\User\Views\PhieuTra\Index.cshtml" />
+    <None Include="Areas\User\Views\PhieuTra\TraSach.cshtml" />
+    <None Include="Areas\User\Views\Product\Create.cshtml" />
+    <None Include="Areas\User\Views\Product\Delete.cshtml" />
+    <None Include="Areas\User\Views\Product\Detail.cshtml" />
+    <None Include="Areas\User\Views\Product\Edit.cshtml" />
+    <None Include="Areas\User\Views\Product\Index.cshtml" />
+    <None Include="Areas\User\Views\Shared\_Layout.cshtml" />
+    <None Include="Areas\User\Views\Shared\_ValidationScriptsPartial.cshtml" />
+    <None Include="Areas\User\_ViewImports.cshtml" />
+    <None Include="Areas\User\_ViewStart.cshtml" />
     <None Include="wwwroot\fontawesome\fonts\fontawesome-webfont.svg" />
     <None Include="wwwroot\fontawesome\fonts\fontawesome-webfont.woff2" />
     <None Include="wwwroot\ionicons\.DS_Store" />
@@ -41,13 +62,6 @@
     <PackageReference Include="MySql.Data" Version="8.0.20" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
     <PackageReference Include="System.Linq" Version="4.3.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Update="Areas\User\Views\Shared\_Layout.cshtml">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
   </ItemGroup>
 
   <ItemGroup>

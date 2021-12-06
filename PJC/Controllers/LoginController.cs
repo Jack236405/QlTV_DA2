@@ -17,7 +17,8 @@ namespace PJC.Controllers
 
     public class LoginController : Controller
     {
-        
+        const string SessionQuyen = "_Quyen";
+
         [HttpGet]
         public IActionResult Index()
         {
@@ -40,6 +41,7 @@ namespace PJC.Controllers
                 HttpContext.Session.SetString("NguoiDung", NguoiDung);          
                 if (kq == 1)
                 {
+
                     return RedirectToAction("Index", "Home");
                     //return RedirectToAction("Index", "Home");
                 }

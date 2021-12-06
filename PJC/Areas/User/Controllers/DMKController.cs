@@ -20,7 +20,7 @@ namespace PJC.Areas.User
             {
                 ViewBag.SuccessMsg = TempData["result"];
             }
-            ViewBag.user = HttpContext.Session.GetString("NguoiDung");
+            ViewBag.NguoiDung = HttpContext.Session.GetString("NguoiDung");
             return View();
         }
         [HttpPost]
@@ -28,11 +28,16 @@ namespace PJC.Areas.User
         {
             int count;
             StoreContext context = HttpContext.RequestServices.GetService(typeof(PJC.Models.StoreContext)) as StoreContext;
-            ViewBag.user = HttpContext.Session.GetString("NguoiDung");
+            ViewBag.NguoiDung = HttpContext.Session.GetString("NguoiDung");
             if (string.Compare(d.MatKhau, d.PassWordConfirm, false) == 0)
             {
-                count = context.DoiMK(d);
-                if (count > 0)
+                 count = context.DoiMK(d);
+                if (count == 100)
+                {
+                    TempData["result"] = "Mật khẩu cũ không khớp";
+                    return Redirect("~/User/DMK/DoiMK");
+                }
+                else if(count == 1)
                 {
                     TempData["result"] = "Đổi mật khẩu thành công";
                     return View();

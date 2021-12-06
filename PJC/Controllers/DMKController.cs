@@ -31,7 +31,12 @@ namespace PJC.Controllers
             if (string.Compare(d.MatKhau, d.PassWordConfirm, false) == 0)
             {
                 count = context.DoiMK(d);
-                if (count > 0)
+                if (count == 100)
+                {
+                    TempData["result"] = "Mật khẩu cũ không khớp";
+                    return Redirect("~/User/DMK/DoiMK");
+                }
+                else if (count == 1)
                 {
                     TempData["result"] = "Đổi mật khẩu thành công";
                     return View();

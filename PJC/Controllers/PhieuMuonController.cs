@@ -24,6 +24,7 @@ namespace PJC.Controllers
             StoreContext context = HttpContext.RequestServices.GetService(typeof(PJC.Models.StoreContext)) as StoreContext;
             return View(context.GetPhieuMuon());
         }
+        int idpm = 0;
         [HttpGet]
         public IActionResult Create()
         {
