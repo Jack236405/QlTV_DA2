@@ -1329,5 +1329,293 @@ namespace PJC.Models
             }
             return tong;
         }
+        public int DemDoanhThuT1()
+        {
+            int tong = 0;
+
+            using (SqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("select * from ctpm where NgayTra between '2021-01-01 00:00:00' and '2021-01-31 23:59:00'", conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        if (reader["Ngaytra"].ToString().Length != 0)
+                        {
+                            tong = tong + int.Parse(reader["TienPhat"].ToString());
+                        }
+                    }
+                    reader.Close();
+                }
+                conn.Close();
+            }
+            return tong;
+        }
+        public int DemDoanhThuT2()
+        {
+            int tong = 0;
+
+            using (SqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("select * from ctpm where NgayTra between '2021-02-01 00:00:00' and '2021-02-28 23:59:00'", conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        if (reader["Ngaytra"].ToString().Length != 0)
+                        {
+                            tong = tong + int.Parse(reader["TienPhat"].ToString());
+                        }
+                    }
+                    reader.Close();
+                }
+                conn.Close();
+            }
+            return tong;
+        }
+        public int DemDoanhThuT3()
+        {
+            int tong = 0;
+
+            using (SqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("select * from ctpm where NgayTra between '2021-03-01 00:00:00' and '2021-03-31 23:59:00'", conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        if (reader["Ngaytra"].ToString().Length != 0)
+                        {
+                            tong = tong + int.Parse(reader["TienPhat"].ToString());
+                        }
+                    }
+                    reader.Close();
+                }
+                conn.Close();
+            }
+            return tong;
+        }
+        public int DemDoanhThuT4()
+        {
+            int tong = 0;
+
+            using (SqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("select * from ctpm where NgayTra between '2021-04-01 00:00:00' and '2021-04-30 23:59:00'", conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        if (reader["Ngaytra"].ToString().Length != 0)
+                        {
+                            tong = tong + int.Parse(reader["TienPhat"].ToString());
+                        }
+                    }
+                    reader.Close();
+                }
+                conn.Close();
+            }
+            return tong;
+        }
+        public int DemDoanhThuT5()
+        {
+            int tong = 0;
+
+            using (SqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("select * from ctpm where NgayTra between '2021-05-01 00:00:00' and '2021-05-31 23:59:00'", conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        if (reader["Ngaytra"].ToString().Length != 0)
+                        {
+                            tong = tong + int.Parse(reader["TienPhat"].ToString());
+                        }
+                    }
+                    reader.Close();
+                }
+                conn.Close();
+            }
+            return tong;
+        }
+        public int DemDoanhThuT6()
+        {
+            int tong = 0;
+
+            using (SqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("select * from ctpm where NgayTra between '2021-06-01 00:00:00' and '2021-06-30 23:59:00'", conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        if (reader["Ngaytra"].ToString().Length != 0)
+                        {
+                            tong = tong + int.Parse(reader["TienPhat"].ToString());
+                        }
+                    }
+                    reader.Close();
+                }
+                conn.Close();
+            }
+            return tong;
+        }
+        public int DemDoanhThuT7()
+        {
+            int tong = 0;
+
+            using (SqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("select * from ctpm where NgayTra between '2021-07-01 00:00:00' and '2021-01-31 23:59:00'", conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        if (reader["Ngaytra"].ToString().Length != 0)
+                        {
+                            tong = tong + int.Parse(reader["TienPhat"].ToString());
+                        }
+                    }
+                    reader.Close();
+                }
+                conn.Close();
+            }
+            return tong;
+        }
+        public int DemDoanhThuT8()
+        {
+            int tong = 0;
+
+            using (SqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("select * from ctpm where NgayTra between '2021-08-01 00:00:00' and '2021-08-31 23:59:00'", conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        if (reader["Ngaytra"].ToString().Length != 0)
+                        {
+                            tong = tong + int.Parse(reader["TienPhat"].ToString());
+                        }
+                    }
+                    reader.Close();
+                }
+                conn.Close();
+            }
+            return tong;
+        }
+        public int DemDoanhThuT9()
+        {
+            int tong = 0;
+
+            using (SqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("select * from ctpm where NgayTra between '2021-09-01 00:00:00' and '2021-01-30 23:59:00'", conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        if (reader["Ngaytra"].ToString().Length != 0)
+                        {
+                            tong = tong + int.Parse(reader["TienPhat"].ToString());
+                        }
+                    }
+                    reader.Close();
+                }
+                conn.Close();
+            }
+            return tong;
+        }
+        public int DemDoanhThuT10()
+        {
+            int tong = 0;
+
+            using (SqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("select * from ctpm where NgayTra between '2021-10-01 00:00:00' and '2021-10-31 23:59:00'", conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        if (reader["Ngaytra"].ToString().Length != 0)
+                        {
+                            tong = tong + int.Parse(reader["TienPhat"].ToString());
+                        }
+                    }
+                    reader.Close();
+                }
+                conn.Close();
+            }
+            return tong;
+        }
+        public int DemDoanhThuT11()
+        {
+            int tong = 0;
+
+            using (SqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("select * from ctpm where NgayTra between '2021-11-01 00:00:00' and '2021-11-30 23:59:00'", conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        if (reader["Ngaytra"].ToString().Length != 0)
+                        {
+                            tong = tong + int.Parse(reader["TienPhat"].ToString());
+                        }
+                    }
+                    reader.Close();
+                }
+                conn.Close();
+            }
+            return tong;
+        }
+        public int DemDoanhThuT12()
+        {
+            int tong = 0;
+
+            using (SqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("select * from ctpm where NgayTra between '2021-12-01 00:00:00' and '2021-12-31 23:59:00'", conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        if (reader["Ngaytra"].ToString().Length != 0)
+                        {
+                            tong = tong + int.Parse(reader["TienPhat"].ToString());
+                        }
+                    }
+                    reader.Close();
+                }
+                conn.Close();
+            }
+            return tong;
+        }
     }
 }

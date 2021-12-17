@@ -64,7 +64,7 @@
                 function myfunction() {
 
                     var doc = new jsPDF()
-                    var h1 = document.querySelector('#data').insertAdjacentHTML.toString('base64')
+                    var h1 = document.querySelector('#data')
                     doc.fromHTML(h1, 15, 15), 
                     doc.save('sample-file.pdf');
                 }
