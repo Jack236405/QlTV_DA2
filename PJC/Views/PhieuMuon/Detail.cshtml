@@ -22,37 +22,38 @@
             <hr />
             <dl id="data" class="row">
                 <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.MaPM)
+                    <span style="color:blue">Phiếu Mượn</span>
+                    
                 </dt>
                 <dd class="col-sm-10">
                     @Html.DisplayFor(model => model.MaPM)
                 </dd>
                 <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.MaDG)
+                    ID Doc Gia
                 </dt>
                 <dd class="col-sm-10">
                     @Html.DisplayFor(model => model.MaDG)
                 </dd>
                 <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.NgayMuon)
+                    Ngay Muon
                 </dt>
                 <dd class="col-sm-10">
                     @Html.DisplayFor(model => model.NgayMuon)
                 </dd>
                 <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.NgayHenTra)
+                    Ngay Hen Tra
                 </dt>
                 <dd class="col-sm-10">
                     @Html.DisplayFor(model => model.NgayHenTra)
                 </dd>
                 <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.SoLuongMuon)
+                    SO Luong Muon 
                 </dt>
                 <dd class="col-sm-10">
                     @Html.DisplayFor(model => model.SoLuongMuon)
                 </dd>
                 <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.NguoiDung)
+                    Thu Thu
                 </dt>
                 <dd class="col-sm-10">
                     @Html.DisplayFor(model => model.NguoiDung)
@@ -63,9 +64,9 @@
                 function myfunction() {
 
                     var doc = new jsPDF()
-                    var h1 = document.querySelector('#data')
-                    doc.fromHTML(h1, 15, 15)
-                    doc.save("output.pdf")
+                    var h1 = document.querySelector('#data').insertAdjacentHTML.toString('base64')
+                    doc.fromHTML(h1, 15, 15), 
+                    doc.save('sample-file.pdf');
                 }
             </script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
