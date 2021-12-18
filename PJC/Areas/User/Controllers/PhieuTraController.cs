@@ -56,6 +56,7 @@ namespace PJC.Areas.User.Controllers
         [HttpGet]
         public IActionResult Edit(string id,string mas)
         {
+            ViewBag.sessionv = HttpContext.Session.GetString("NguoiDung");
             StoreContext context = HttpContext.RequestServices.GetService(typeof(PJC.Models.StoreContext)) as StoreContext;
             CTPM pt = context.GetPhieuTraByMaPM(id,mas);
             ViewData.Model = pt;
@@ -65,6 +66,7 @@ namespace PJC.Areas.User.Controllers
         public IActionResult Edit(PhieuMuonInCTPM pt)
         {
             int count;
+            ViewBag.sessionv = HttpContext.Session.GetString("NguoiDung");
             StoreContext context = HttpContext.RequestServices.GetService(typeof(PJC.Models.StoreContext)) as StoreContext;
             count = context.UpdatePhieuTra(pt);
             if (count > 0)
@@ -123,7 +125,7 @@ namespace PJC.Areas.User.Controllers
         [HttpGet]
         public IActionResult EditTraSach(string id, string mas)
         {
-            ViewBag.user = HttpContext.Session.GetString("user");
+            ViewBag.sessionv = HttpContext.Session.GetString("NguoiDung");
             StoreContext context = HttpContext.RequestServices.GetService(typeof(PJC.Models.StoreContext)) as StoreContext;
             PhieuMuonInCTPM pt = context.GetPhieuChuaTraById(id, mas);
             ViewData.Model = pt;
@@ -133,9 +135,8 @@ namespace PJC.Areas.User.Controllers
         public IActionResult EditTraSach(PhieuMuonInCTPM pt)
         {
             int count, count1;
-            ViewBag.user = HttpContext.Session.GetString("user");
+            ViewBag.sessionv = HttpContext.Session.GetString("NguoiDung");
             StoreContext context = HttpContext.RequestServices.GetService(typeof(PJC.Models.StoreContext)) as StoreContext;
-
             count = context.UpdatePhieuTra(pt);
             count1 = context.UpdateTienPhat(pt);
             DateTime ngaytra = pt.NgayTra ?? DateTime.Now; ;
@@ -146,13 +147,13 @@ namespace PJC.Areas.User.Controllers
             double? tienphat = 0;
             if (hieu > 0 && day > 0)
             {
-                tienphat = hieu * 1000 + day * 5000;
-                TempData["result"] = "Bạn làm hao tổn sách: " + hieu + "%. Và bạn trễ hạn: " + day + " ngày. Bạn bị phạt: " + (hieu * 1000 + day * 5000);
+                tienphat = hieu * 10000 + day * 5000;
+                TempData["result"] = "Bạn làm hao tổn sách: " + hieu + "%. Và bạn trễ hạn: " + day + " ngày. Bạn bị phạt: " + (hieu * 10000 + day * 5000);
             }
             if (hieu > 0 && day <= 0)
             {
-                tienphat = hieu * 1000;
-                TempData["result"] = "Bạn làm hao tổn sách: " + hieu + "%. Bạn bị phạt: " + hieu * 1000 + " VND";
+                tienphat = hieu * 10000;
+                TempData["result"] = "Bạn làm hao tổn sách: " + hieu + "%. Bạn bị phạt: " + hieu * 10000 + " VND";
             }
             if (hieu == 0 && day > 0)
             {

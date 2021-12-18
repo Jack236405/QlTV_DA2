@@ -29,22 +29,25 @@
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
                         <label asp-for="MaPM" class="control-label"></label>
-                        <input asp-for="MaPM" class="form-control" value="@ViewBag.mapm" />
+                        <input asp-for="MaPM" class="form-control" value="@ViewBag.mapm" readonly />
                         <span asp-validation-for="MaPM" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="MaSach" class="control-label"></label>
-                        <select asp-for="MaSach" class="form-control" asp-items="ViewBag.MaSach"></select>
+                        <input asp-for="MaSach" class="form-control" list="browsers">
+                        <datalist id="browsers">
+                            <select class="form-control" asp-items="ViewBag.MaSach"></select>
+                        </datalist>
                     </div>
 
                     <div class="form-group">
                         <label asp-for="TinhTrangSach" class="control-label"></label>
-                        <select asp-for="TinhTrangSach"  class="form-control">
+                        <select asp-for="TinhTrangSach" class="form-control">
                             <option> - chọn - </option>
                             <option value="2">Bình Thường</option>
                             <option value="1">Đã hư một phần</option>
                             @*<option value="0">Mất sách</option>*@
-                        </select>                  
+                        </select>
                         <span asp-validation-for="TinhTrangSach" class="text-danger"></span>
                     </div>
 

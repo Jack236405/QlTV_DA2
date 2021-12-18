@@ -41,13 +41,31 @@
                     @Html.DisplayNameFor(model => model.TinhTrangSach)
                 </dt>
                 <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.TinhTrangSach)
-                </dd>
+                    @if (Model.TinhTrangSach == 1)
+                    {
+                        <span>Đã hư một phần</span>
+                    }
+                    else if (Model.TinhTrangSach == 2)
+                    {
+                        <span>Bình Thường</span>
+                    }
+                    </dd>
                 <dt class="col-sm-2">
                     @Html.DisplayNameFor(model => model.TinhTrangTra)
                 </dt>
                 <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.TinhTrangTra)
+                    @if (Model.TinhTrangSach == 0)
+                    {
+                        <span>Mất sách</span>
+                    }
+                    else if (Model.TinhTrangSach == 1)
+                    {
+                        <span>Đã hư một phần</span>
+                    }
+                    else if (Model.TinhTrangSach == 2)
+                    {
+                        <span>Bình Thường</span>
+                    }
                 </dd>
                 <dt class="col-sm-2">
                     @Html.DisplayNameFor(model => model.NguoiDung)

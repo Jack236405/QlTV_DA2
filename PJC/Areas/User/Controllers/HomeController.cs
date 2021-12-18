@@ -48,6 +48,32 @@ namespace PJC.Areas.User.Controllers
             ViewBag.DoanhThut10 = f10;
             ViewBag.DoanhThut11 = f11;
             ViewBag.DoanhThut12 = f12;
+
+            int a = context.DemPhieuMuont1();
+            int a2 = context.DemPhieuMuont2();
+            int a3 = context.DemPhieuMuont3();
+            int a4 = context.DemPhieuMuont4();
+            int a5 = context.DemPhieuMuont5();
+            int a6 = context.DemPhieuMuont6();
+            int a7 = context.DemPhieuMuont7();
+            int a8 = context.DemPhieuMuont8();
+            int a9 = context.DemPhieuMuont9();
+            int a10 = context.DemPhieuMuont10();
+            int a11 = context.DemPhieuMuont11();
+            int a12= context.DemPhieuMuont12();
+
+            ViewBag.PhieuMuon = a;
+            ViewBag.PhieuMuon2 = a2;
+            ViewBag.PhieuMuon3 = a3;
+            ViewBag.PhieuMuon4 = a4;
+            ViewBag.PhieuMuon5= a5;
+            ViewBag.PhieuMuon6 = a6;
+            ViewBag.PhieuMuon7 = a7;
+            ViewBag.PhieuMuon8 = a8;
+            ViewBag.PhieuMuon9 = a9;
+            ViewBag.PhieuMuon10 = a10;
+            ViewBag.PhieuMuon11 = a11;
+            ViewBag.PhieuMuon12 = a12;
             return View();
         }
 

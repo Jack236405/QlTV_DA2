@@ -64,6 +64,7 @@ namespace PJC.Controllers
         {
             ViewBag.sessionv = HttpContext.Session.GetString("NguoiDung");
             StoreContext context = HttpContext.RequestServices.GetService(typeof(PJC.Models.StoreContext)) as StoreContext;
+            ViewData["MaSach"] = new SelectList(context.GetSanPham(), "MaSach", "TenSach");
             CTPM pt = context.GetPhieuTraByMaPM(id, masach);
             ViewData.Model = pt;
             return View();
@@ -155,13 +156,13 @@ namespace PJC.Controllers
             double? tienphat = 0;
             if (hieu > 0 && day > 0)
             {
-                tienphat = hieu * 1000 + day * 5000;
-                TempData["result"] = "Bạn làm hao tổn sách: " + hieu + "%. Và bạn trễ hạn: " + day + " ngày. Bạn bị phạt: " + (hieu * 1000 + day * 5000);
+                tienphat = hieu * 10000 + day * 5000;
+                TempData["result"] = "Bạn làm hao tổn sách: " + hieu + "%. Và bạn trễ hạn: " + day + " ngày. Bạn bị phạt: " + (hieu * 10000 + day * 5000);
             }
             if (hieu > 0 && day <= 0)
             {
-                tienphat = hieu * 1000;
-                TempData["result"] = "Bạn làm hao tổn sách: " + hieu + "%. Bạn bị phạt: " + hieu * 1000 + " VND";
+                tienphat = hieu * 10000;
+                TempData["result"] = "Bạn làm hao tổn sách: " + hieu + "%. Bạn bị phạt: " + hieu * 10000 + " VND";
             }
             if (hieu == 0 && day > 0)
             {

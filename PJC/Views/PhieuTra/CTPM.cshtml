@@ -43,32 +43,50 @@
                 <tbody>
                     @foreach (var item in Model)
                     {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.MaPM)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.MaSach)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.NgayTra)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.TinhTrangSach)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.TinhTrangTra)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.NguoiDung)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.GhiChu)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.TienPhat)
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MaPM)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MaSach)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NgayTra)
+                        </td>
+                        <td>
+                            @if (item.TinhTrangSach == 1)
+                            {
+                                <span>Đã hư một phần</span>
+                            }
+                            else if (item.TinhTrangSach == 2)
+                            {
+                                <span>Bình Thường</span>
+                            }
+                        </td>
+                        <td>
+                            @if (item.TinhTrangSach == 0)
+                            {
+                                <span>Mất sách</span>
+                            }
+                            else if (item.TinhTrangSach == 1)
+                            {
+                                <span>Đã hư một phần</span>
+                            }
+                            else if (item.TinhTrangSach == 2)
+                            {
+                                <span>Bình Thường</span>
+                            }
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NguoiDung)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.GhiChu)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TienPhat)
+                        </td>
+                    </tr>
                     }
                 </tbody>
             </table>

@@ -31,7 +31,7 @@ CREATE TABLE docgia (
   MatSach int NOT NULL
   PRIMARY KEY (MaDG)
 )
-
+select * from ctpm where NgayTra between '2021-07-01 00:00:00' and '2021-07-31 23:59:00'
 INSERT INTO docgia (MaDG, TenDG, SDT, DiaChi, GioiTinh, MatSach) VALUES
 (N'DG01', N'Đỗ Nhật Quang', '0342565857', N'Quận  Thủ Đức', N'Nam', 0),
 (N'DG02', N'Trần Quốc Phong', '0981249458', N'Quận  Gò Vấp', N'Nam', 1),

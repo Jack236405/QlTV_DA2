@@ -91,7 +91,7 @@
 
             var options = {
                 chart: {
-                    title: 'Biểu đồ doanh thu',
+                    title: 'Biểu đồ doanh thu năm 2021',
                 }
             };
 
@@ -103,5 +103,45 @@
 </head>
 <body>
     <div id="columnchart_material" style="width: 1200px; height: 500px;"></div>
+</body>
+</html>
+<html>
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['bar'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['2021', 'Phiếu mượn '],
+                ['Tháng 1', @ViewBag.PhieuMuon],
+                ['Tháng 2', @ViewBag.PhieuMuon2],
+                ['Tháng 3', @ViewBag.PhieuMuon3],
+                ['Tháng 4', @ViewBag.PhieuMuon4],
+                ['Tháng 5', @ViewBag.PhieuMuon5],
+                ['Tháng 6', @ViewBag.PhieuMuon6],
+                ['Tháng 7', @ViewBag.PhieuMuon7],
+                ['Tháng 8', @ViewBag.PhieuMuon8],
+                ['Tháng 9', @ViewBag.PhieuMuon9],
+                ['Tháng 10', @ViewBag.PhieuMuon10],
+                ['Tháng 11', @ViewBag.PhieuMuon11],
+                ['Tháng 12', @ViewBag.PhieuMuon12]
+            ]);
+
+            var options = {
+                chart: {
+                    title: 'Biểu đồ thống Kê Phiếu mượn năm 2021',
+                }
+            };
+
+            var chart = new google.charts.Bar(document.getElementById('columnchart_material1'));
+
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+        }
+    </script>
+</head>
+<body>
+    <div id="columnchart_material1" style="width: 1200px; height: 500px;"></div>
 </body>
 </html>

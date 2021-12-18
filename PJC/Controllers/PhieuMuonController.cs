@@ -24,7 +24,6 @@ namespace PJC.Controllers
             StoreContext context = HttpContext.RequestServices.GetService(typeof(PJC.Models.StoreContext)) as StoreContext;
             return View(context.GetPhieuMuon());
         }
-        int idpm = 0;
         [HttpGet]
         public IActionResult Create()
         {
@@ -40,22 +39,26 @@ namespace PJC.Controllers
             HttpContext.Session.SetString("mapm", pm.MaPM);
 
             StoreContext context = HttpContext.RequestServices.GetService(typeof(PJC.Models.StoreContext)) as StoreContext;
+            ViewData["MaDG"] = new SelectList(context.GetDocGia(), "MaDG", "TenDG");
             count = context.CreatePhieuMuon(pm);
             if (count == 100)
             {
                 TempData["result"] = "Bạn làm mất sách 3 lần. Không được mượn nữa!";
-               // return Redirect("/PhieuTra/Index");
+              
             }
-            if (count > 0)
+
+            else if (count != 100)
             {
                 TempData["result"] = "Thêm mới phiếu mượn thành công";
+
+                return Redirect("/PhieuTra/Create");
             }
             else
             {
                 TempData["result"] = "Thêm mới phiếu mượn không thành công";
-            }
 
-            return Redirect("/PhieuTra/Create");
+            }
+            return Redirect("/PhieuMuon/Index");
         }
         [HttpGet]
         public IActionResult Edit(string id)

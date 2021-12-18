@@ -485,17 +485,8 @@ namespace PJC.Models
         }
         public int CreatePhieuMuon(PhieuMuon pm)
         {
-            using (SqlConnection conn = GetConnection())
-            {
-                conn.Open();
-                var str = "insert into phieumuon values(@MaPM, @MaDG,@NgayMuon,@NgayHenTra,@SoLuongMuon,@NguoiDung)";
-                SqlCommand cmd = new SqlCommand(str, conn);
-                cmd.Parameters.AddWithValue("MaPM", pm.MaPM);
-                cmd.Parameters.AddWithValue("MaDG", pm.MaDG);
-                cmd.Parameters.AddWithValue("NgayMuon", pm.NgayMuon);
-                cmd.Parameters.AddWithValue("NgayHenTra", pm.NgayHenTra);
-                cmd.Parameters.AddWithValue("SoLuongMuon", pm.SoLuongMuon);
-                cmd.Parameters.AddWithValue("NguoiDung", pm.NguoiDung);
+
+
                 int matsach = 0;
                 using (SqlConnection conn1 = GetConnection())
                 {
@@ -510,11 +501,25 @@ namespace PJC.Models
                             matsach = int.Parse(reader["MatSach"].ToString());
                         }
                     }
-                    if (matsach == 3)
-                        return 100;
+                if (matsach == 3)
+                    return 100;
+                else
+                {
+                    using (SqlConnection conn = GetConnection())
+                    {
+                        conn.Open();
+                        var str = "insert into phieumuon values(@MaPM, @MaDG,@NgayMuon,@NgayHenTra,@SoLuongMuon,@NguoiDung)";
+                        SqlCommand cmd = new SqlCommand(str, conn);
+                        cmd.Parameters.AddWithValue("MaPM", pm.MaPM);
+                        cmd.Parameters.AddWithValue("MaDG", pm.MaDG);
+                        cmd.Parameters.AddWithValue("NgayMuon", pm.NgayMuon);
+                        cmd.Parameters.AddWithValue("NgayHenTra", pm.NgayHenTra);
+                        cmd.Parameters.AddWithValue("SoLuongMuon", pm.SoLuongMuon);
+                        cmd.Parameters.AddWithValue("NguoiDung", pm.NguoiDung);
+                        return (cmd.ExecuteNonQuery());
+                    }
 
                 }
-                return (cmd.ExecuteNonQuery());
             }
         }
         public int UpdatePhieuMuon(PhieuMuon pm)
@@ -1480,7 +1485,7 @@ namespace PJC.Models
             using (SqlConnection conn = GetConnection())
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("select * from ctpm where NgayTra between '2021-07-01 00:00:00' and '2021-01-31 23:59:00'", conn);
+                SqlCommand cmd = new SqlCommand("select * from ctpm where NgayTra between '2021-07-01 00:00:00' and '2021-07-31 23:59:00'", conn);
 
                 using (var reader = cmd.ExecuteReader())
                 {
@@ -1616,6 +1621,378 @@ namespace PJC.Models
                 conn.Close();
             }
             return tong;
+        }
+        public int DemPhieuMuont1()
+        {
+            int soluongphieumuon = 0;
+            List<PhieuMuon> list = new List<PhieuMuon>();
+
+            using (SqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("select * from phieumuon where NgayMuon between '2021-01-01 00:00:00' and '2021-01-31 23:59:00'", conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        soluongphieumuon++;
+                        list.Add(new PhieuMuon()
+                        {
+                            MaPM = reader["MaPM"].ToString(),
+                            MaDG = reader["MaDG"].ToString(),
+                            NgayMuon = DateTime.Parse(reader["NgayMuon"].ToString()),
+                            NgayHenTra = DateTime.Parse(reader["NgayHenTra"].ToString()),
+                            SoLuongMuon = int.Parse(reader["SoLuongMuon"].ToString()),
+                            NguoiDung = reader["NguoiDung"].ToString(),
+                        });
+                    }
+                    reader.Close();
+                }
+                conn.Close();
+            }
+            return soluongphieumuon;
+        }
+        public int DemPhieuMuont2()
+        {
+            int soluongphieumuon = 0;
+            List<PhieuMuon> list = new List<PhieuMuon>();
+
+            using (SqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("select * from phieumuon where NgayMuon between '2021-02-01 00:00:00' and '2021-02-28 23:59:00'", conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        soluongphieumuon++;
+                        list.Add(new PhieuMuon()
+                        {
+                            MaPM = reader["MaPM"].ToString(),
+                            MaDG = reader["MaDG"].ToString(),
+                            NgayMuon = DateTime.Parse(reader["NgayMuon"].ToString()),
+                            NgayHenTra = DateTime.Parse(reader["NgayHenTra"].ToString()),
+                            SoLuongMuon = int.Parse(reader["SoLuongMuon"].ToString()),
+                            NguoiDung = reader["NguoiDung"].ToString(),
+                        });
+                    }
+                    reader.Close();
+                }
+                conn.Close();
+            }
+            return soluongphieumuon;
+        }
+        public int DemPhieuMuont3()
+        {
+            int soluongphieumuon = 0;
+            List<PhieuMuon> list = new List<PhieuMuon>();
+
+            using (SqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("select * from phieumuon where NgayMuon between '2021-03-01 00:00:00' and '2021-03-31 23:59:00'", conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        soluongphieumuon++;
+                        list.Add(new PhieuMuon()
+                        {
+                            MaPM = reader["MaPM"].ToString(),
+                            MaDG = reader["MaDG"].ToString(),
+                            NgayMuon = DateTime.Parse(reader["NgayMuon"].ToString()),
+                            NgayHenTra = DateTime.Parse(reader["NgayHenTra"].ToString()),
+                            SoLuongMuon = int.Parse(reader["SoLuongMuon"].ToString()),
+                            NguoiDung = reader["NguoiDung"].ToString(),
+                        });
+                    }
+                    reader.Close();
+                }
+                conn.Close();
+            }
+            return soluongphieumuon;
+        }
+        public int DemPhieuMuont4()
+        {
+            int soluongphieumuon = 0;
+            List<PhieuMuon> list = new List<PhieuMuon>();
+
+            using (SqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("select * from phieumuon where NgayMuon between '2021-04-01 00:00:00' and '2021-04-30 23:59:00'", conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        soluongphieumuon++;
+                        list.Add(new PhieuMuon()
+                        {
+                            MaPM = reader["MaPM"].ToString(),
+                            MaDG = reader["MaDG"].ToString(),
+                            NgayMuon = DateTime.Parse(reader["NgayMuon"].ToString()),
+                            NgayHenTra = DateTime.Parse(reader["NgayHenTra"].ToString()),
+                            SoLuongMuon = int.Parse(reader["SoLuongMuon"].ToString()),
+                            NguoiDung = reader["NguoiDung"].ToString(),
+                        });
+                    }
+                    reader.Close();
+                }
+                conn.Close();
+            }
+            return soluongphieumuon;
+        }
+        public int DemPhieuMuont5()
+        {
+            int soluongphieumuon = 0;
+            List<PhieuMuon> list = new List<PhieuMuon>();
+
+            using (SqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("select * from phieumuon where NgayMuon between '2021-05-01 00:00:00' and '2021-05-31 23:59:00'", conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        soluongphieumuon++;
+                        list.Add(new PhieuMuon()
+                        {
+                            MaPM = reader["MaPM"].ToString(),
+                            MaDG = reader["MaDG"].ToString(),
+                            NgayMuon = DateTime.Parse(reader["NgayMuon"].ToString()),
+                            NgayHenTra = DateTime.Parse(reader["NgayHenTra"].ToString()),
+                            SoLuongMuon = int.Parse(reader["SoLuongMuon"].ToString()),
+                            NguoiDung = reader["NguoiDung"].ToString(),
+                        });
+                    }
+                    reader.Close();
+                }
+                conn.Close();
+            }
+            return soluongphieumuon;
+        }
+        public int DemPhieuMuont6()
+        {
+            int soluongphieumuon = 0;
+            List<PhieuMuon> list = new List<PhieuMuon>();
+
+            using (SqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("select * from phieumuon where NgayMuon between '2021-06-01 00:00:00' and '2021-06-30 23:59:00'", conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        soluongphieumuon++;
+                        list.Add(new PhieuMuon()
+                        {
+                            MaPM = reader["MaPM"].ToString(),
+                            MaDG = reader["MaDG"].ToString(),
+                            NgayMuon = DateTime.Parse(reader["NgayMuon"].ToString()),
+                            NgayHenTra = DateTime.Parse(reader["NgayHenTra"].ToString()),
+                            SoLuongMuon = int.Parse(reader["SoLuongMuon"].ToString()),
+                            NguoiDung = reader["NguoiDung"].ToString(),
+                        });
+                    }
+                    reader.Close();
+                }
+                conn.Close();
+            }
+            return soluongphieumuon;
+        }
+        public int DemPhieuMuont7()
+        {
+            int soluongphieumuon = 0;
+            List<PhieuMuon> list = new List<PhieuMuon>();
+
+            using (SqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("select * from phieumuon where NgayMuon between '2021-07-01 00:00:00' and '2021-07-31 23:59:00'", conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        soluongphieumuon++;
+                        list.Add(new PhieuMuon()
+                        {
+                            MaPM = reader["MaPM"].ToString(),
+                            MaDG = reader["MaDG"].ToString(),
+                            NgayMuon = DateTime.Parse(reader["NgayMuon"].ToString()),
+                            NgayHenTra = DateTime.Parse(reader["NgayHenTra"].ToString()),
+                            SoLuongMuon = int.Parse(reader["SoLuongMuon"].ToString()),
+                            NguoiDung = reader["NguoiDung"].ToString(),
+                        });
+                    }
+                    reader.Close();
+                }
+                conn.Close();
+            }
+            return soluongphieumuon;
+        }
+        public int DemPhieuMuont8()
+        {
+            int soluongphieumuon = 0;
+            List<PhieuMuon> list = new List<PhieuMuon>();
+
+            using (SqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("select * from phieumuon where NgayMuon between '2021-08-01 00:00:00' and '2021-08-31 23:59:00'", conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        soluongphieumuon++;
+                        list.Add(new PhieuMuon()
+                        {
+                            MaPM = reader["MaPM"].ToString(),
+                            MaDG = reader["MaDG"].ToString(),
+                            NgayMuon = DateTime.Parse(reader["NgayMuon"].ToString()),
+                            NgayHenTra = DateTime.Parse(reader["NgayHenTra"].ToString()),
+                            SoLuongMuon = int.Parse(reader["SoLuongMuon"].ToString()),
+                            NguoiDung = reader["NguoiDung"].ToString(),
+                        });
+                    }
+                    reader.Close();
+                }
+                conn.Close();
+            }
+            return soluongphieumuon;
+        }
+        public int DemPhieuMuont9()
+        {
+            int soluongphieumuon = 0;
+            List<PhieuMuon> list = new List<PhieuMuon>();
+
+            using (SqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("select * from phieumuon where NgayMuon between '2021-09-01 00:00:00' and '2021-09-30 23:59:00'", conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        soluongphieumuon++;
+                        list.Add(new PhieuMuon()
+                        {
+                            MaPM = reader["MaPM"].ToString(),
+                            MaDG = reader["MaDG"].ToString(),
+                            NgayMuon = DateTime.Parse(reader["NgayMuon"].ToString()),
+                            NgayHenTra = DateTime.Parse(reader["NgayHenTra"].ToString()),
+                            SoLuongMuon = int.Parse(reader["SoLuongMuon"].ToString()),
+                            NguoiDung = reader["NguoiDung"].ToString(),
+                        });
+                    }
+                    reader.Close();
+                }
+                conn.Close();
+            }
+            return soluongphieumuon;
+        }
+        public int DemPhieuMuont10()
+        {
+            int soluongphieumuon = 0;
+            List<PhieuMuon> list = new List<PhieuMuon>();
+
+            using (SqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("select * from phieumuon where NgayMuon between '2021-10-01 00:00:00' and '2021-10-31 23:59:00'", conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        soluongphieumuon++;
+                        list.Add(new PhieuMuon()
+                        {
+                            MaPM = reader["MaPM"].ToString(),
+                            MaDG = reader["MaDG"].ToString(),
+                            NgayMuon = DateTime.Parse(reader["NgayMuon"].ToString()),
+                            NgayHenTra = DateTime.Parse(reader["NgayHenTra"].ToString()),
+                            SoLuongMuon = int.Parse(reader["SoLuongMuon"].ToString()),
+                            NguoiDung = reader["NguoiDung"].ToString(),
+                        });
+                    }
+                    reader.Close();
+                }
+                conn.Close();
+            }
+            return soluongphieumuon;
+        }
+        public int DemPhieuMuont11()
+        {
+            int soluongphieumuon = 0;
+            List<PhieuMuon> list = new List<PhieuMuon>();
+
+            using (SqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("select * from phieumuon where NgayMuon between '2021-11-01 00:00:00' and '2021-11-30 23:59:00'", conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        soluongphieumuon++;
+                        list.Add(new PhieuMuon()
+                        {
+                            MaPM = reader["MaPM"].ToString(),
+                            MaDG = reader["MaDG"].ToString(),
+                            NgayMuon = DateTime.Parse(reader["NgayMuon"].ToString()),
+                            NgayHenTra = DateTime.Parse(reader["NgayHenTra"].ToString()),
+                            SoLuongMuon = int.Parse(reader["SoLuongMuon"].ToString()),
+                            NguoiDung = reader["NguoiDung"].ToString(),
+                        });
+                    }
+                    reader.Close();
+                }
+                conn.Close();
+            }
+            return soluongphieumuon;
+        }
+        public int DemPhieuMuont12()
+        {
+            int soluongphieumuon = 0;
+            List<PhieuMuon> list = new List<PhieuMuon>();
+
+            using (SqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("select * from phieumuon where NgayMuon between '2021-12-01 00:00:00' and '2021-12-31 23:59:00'", conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        soluongphieumuon++;
+                        list.Add(new PhieuMuon()
+                        {
+                            MaPM = reader["MaPM"].ToString(),
+                            MaDG = reader["MaDG"].ToString(),
+                            NgayMuon = DateTime.Parse(reader["NgayMuon"].ToString()),
+                            NgayHenTra = DateTime.Parse(reader["NgayHenTra"].ToString()),
+                            SoLuongMuon = int.Parse(reader["SoLuongMuon"].ToString()),
+                            NguoiDung = reader["NguoiDung"].ToString(),
+                        });
+                    }
+                    reader.Close();
+                }
+                conn.Close();
+            }
+            return soluongphieumuon;
         }
     }
 }
