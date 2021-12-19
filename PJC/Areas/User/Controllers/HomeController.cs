@@ -74,6 +74,19 @@ namespace PJC.Areas.User.Controllers
             ViewBag.PhieuMuon10 = a10;
             ViewBag.PhieuMuon11 = a11;
             ViewBag.PhieuMuon12 = a12;
+
+            int v = context.DemSach();
+            int b = context.DemDocGia();
+            int c = context.DemPhieuMuon();
+            int d = context.DemPhieuTra();
+            int e = context.DemPhieuChuaTra();
+            double g = context.DemDoanhThu();
+            ViewBag.SoLuongSach = v;
+            ViewBag.SoLuongDocGia = b;
+            ViewBag.SoLuongPhieuMuon = c;
+            ViewBag.SoLuongPhieuTra = d;
+            ViewBag.SoLuongPhieuChuaTra = e;
+            ViewBag.DoanhThutong = g;
             return View();
         }
 

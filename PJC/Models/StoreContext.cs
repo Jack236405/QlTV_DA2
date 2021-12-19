@@ -56,7 +56,32 @@ namespace PJC.Models
                 conn.Close();
             }
             return list;
-        }      
+        }
+        public List<Sach> GetSach()
+        {
+            List<Sach> list = new List<Sach>();
+
+            using (SqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("select * from SACH where SoLuong = 0", conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        list.Add(new Sach()
+                        {
+                            MaSach = reader["MaSach"].ToString(),
+                            TenSach = reader["TenSach"].ToString(),
+                        }); 
+                    }
+                    reader.Close();
+                }
+                conn.Close();
+            }
+            return list;
+        }
         public List<Sach> GetSanPhamSearch(string searchString)
         {
             List<Sach> list = new List<Sach>();
@@ -80,7 +105,7 @@ namespace PJC.Models
                             SoLuong = int.Parse(reader["SoLuong"].ToString()),
                             GiaTien = int.Parse(reader["GiaTien"].ToString()),
                             ImageUrl = reader["ImageUrl"].ToString(),
-                        }); ;
+                        }); 
                     }
                     reader.Close();
                 }
@@ -106,7 +131,7 @@ namespace PJC.Models
                             SoLuong = int.Parse(reader["SoLuong"].ToString()),
                             GiaTien = int.Parse(reader["GiaTien"].ToString()),
                             ImageUrl = reader["ImageUrl"].ToString(),
-                        }); ;
+                        }); 
                     }
                     reader.Close();
                 }
@@ -718,46 +743,54 @@ namespace PJC.Models
         {
             int soluongsach = 0;
             _date = SqlDateTime.Null;
-
-            using (SqlConnection conn = GetConnection())
+            using (SqlConnection conn3 = GetConnection())
             {
-                conn.Open();
-                var str = "insert into ctpm values(@MaPM, @MaSach, @NgayTra, @TinhTrangSach, @TinhTrangTra, @NguoiDung, @GhiChu, @TienPhat)";
-                SqlCommand cmd = new SqlCommand(str, conn);
-                cmd.Parameters.AddWithValue("MaPM", pt.MaPM);
-                cmd.Parameters.AddWithValue("MaSach", pt.MaSach);
-                cmd.Parameters.AddWithValue("NgayTra", _date);
-                cmd.Parameters.AddWithValue("TinhTrangSach", pt.TinhTrangSach);
-                cmd.Parameters.AddWithValue("TinhTrangTra", DBNull.Value);
-                cmd.Parameters.AddWithValue("NguoiDung", DBNull.Value);
-                cmd.Parameters.AddWithValue("GhiChu", DBNull.Value);
-                cmd.Parameters.AddWithValue("TienPhat", DBNull.Value);
-                cmd.ExecuteNonQuery();
-                using (SqlConnection conn3 = GetConnection())
+                conn3.Open();
+                var str3 = "Select SoLuong from sach where MaSach=@masach and SoLuong > 0";
+                SqlCommand cmd3 = new SqlCommand(str3, conn3);
+                cmd3.Parameters.AddWithValue("masach", pt.MaSach);
+                var readerr = cmd3.ExecuteReader();
+                if (readerr.Read() == false)
                 {
-                    conn3.Open();
-                    var str3 = "Select SoLuong from sach where MaSach=@masach";
-                    SqlCommand cmd3 = new SqlCommand(str3, conn3);
-                    cmd3.Parameters.AddWithValue("masach", pt.MaSach);
-                    using (var reader3 = cmd3.ExecuteReader())
+                    return 100;
+                }
+                else
+                {
                     {
-                        while (reader3.Read())
+                        while (readerr.Read())
                         {
-                            soluongsach = int.Parse(reader3["SoLuong"].ToString());
+                            soluongsach = int.Parse(readerr["SoLuong"].ToString());
                         }
 
                     }
-                }
-                using (SqlConnection conn2 = GetConnection())
-                {
-                    conn2.Open();
-                    var str2 = "update sach set SoLuong=@soluong where MaSach=@masach";
-                    SqlCommand cmd2 = new SqlCommand(str2, conn2);
-                    cmd2.Parameters.AddWithValue("soluong", soluongsach - 1);
-                    cmd2.Parameters.AddWithValue("masach", pt.MaSach);
-                    return cmd2.ExecuteNonQuery();
+                    using (SqlConnection conn = GetConnection())
+                    {
+                        conn.Open();
+                        var str = "insert into ctpm values(@MaPM, @MaSach, @NgayTra, @TinhTrangSach, @TinhTrangTra, @NguoiDung, @GhiChu, @TienPhat)";
+                        SqlCommand cmd = new SqlCommand(str, conn);
+                        cmd.Parameters.AddWithValue("MaPM", pt.MaPM);
+                        cmd.Parameters.AddWithValue("MaSach", pt.MaSach);
+                        cmd.Parameters.AddWithValue("NgayTra", _date);
+                        cmd.Parameters.AddWithValue("TinhTrangSach", pt.TinhTrangSach);
+                        cmd.Parameters.AddWithValue("TinhTrangTra", DBNull.Value);
+                        cmd.Parameters.AddWithValue("NguoiDung", DBNull.Value);
+                        cmd.Parameters.AddWithValue("GhiChu", DBNull.Value);
+                        cmd.Parameters.AddWithValue("TienPhat", DBNull.Value);
+                        cmd.ExecuteNonQuery();
+
+                        using (SqlConnection conn2 = GetConnection())
+                        {
+                            conn2.Open();
+                            var str2 = "update sach set SoLuong=@soluong where MaSach=@masach";
+                            SqlCommand cmd2 = new SqlCommand(str2, conn2);
+                            cmd2.Parameters.AddWithValue("soluong", soluongsach - 1);
+                            cmd2.Parameters.AddWithValue("masach", pt.MaSach);
+                            return cmd2.ExecuteNonQuery();
+                        }
+                    }
                 }
             }
+           
 
 
 

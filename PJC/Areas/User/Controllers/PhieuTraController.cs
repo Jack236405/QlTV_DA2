@@ -32,7 +32,7 @@ namespace PJC.Areas.User.Controllers
             }
             StoreContext context = HttpContext.RequestServices.GetService(typeof(PJC.Models.StoreContext)) as StoreContext;
             ViewBag.mapm = HttpContext.Session.GetString("mapm");
-            ViewData["MaSach"] = new SelectList(context.GetSanPham(), "MaSach", "TenSach");
+            //ViewData["MaSach"] = new SelectList(context.GetSach(), "MaSach", "TenSach");
             return View();
         }
         [HttpPost]
@@ -43,9 +43,13 @@ namespace PJC.Areas.User.Controllers
             ViewBag.mapm = HttpContext.Session.GetString("mapm");
             StoreContext context = HttpContext.RequestServices.GetService(typeof(PJC.Models.StoreContext)) as StoreContext;
             count = context.CreatePhieuTra(pt);
-            if (count > 0)
+            if (count > 0 && count != 100)
             {
                 TempData["result"] = "Thêm sách thành công";
+            }
+            else if (count == 100)
+            {
+                TempData["result"] = "Không còn sách này trong thư viện";
             }
             else
             {

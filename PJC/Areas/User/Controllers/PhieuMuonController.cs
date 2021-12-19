@@ -30,7 +30,6 @@ namespace PJC.Areas.User.Controllers
         {
             StoreContext context = HttpContext.RequestServices.GetService(typeof(PJC.Models.StoreContext)) as StoreContext;
             ViewBag.sessionv = HttpContext.Session.GetString("NguoiDung");
-            ViewData["MaDG"] = new SelectList(context.GetDocGia(), "MaDG", "TenDG");
             return View();
         }
         [HttpPost]
@@ -121,12 +120,11 @@ namespace PJC.Areas.User.Controllers
             }
         }
         [HttpGet]
-        public IActionResult Detail(string id)
+        public IActionResult GetPMDG(string id)
         {
             StoreContext context = HttpContext.RequestServices.GetService(typeof(PJC.Models.StoreContext)) as StoreContext;
-            PhieuMuon pm = context.GetPhieuMuonByMaPM(id);
-            ViewData.Model = pm;
-            return View();
+            ViewBag.madg = id;
+            return View(context.GetPhieuMuonByMADG(id));
         }
     }
 }
